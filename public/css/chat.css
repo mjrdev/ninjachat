@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+html, body, div, .background {
+  font-family: 'Lato', arial, helvetica, sans-serif;
+}
+
+.bg-primary {
+  background-color: #92dcdc;
+}
+
+.background {
+  background-color: #121313;
+  height: 100vh;
+}
+
+.chat {
+  height: 90vh;
+}
+
+#list-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow-y: scroll;
+}

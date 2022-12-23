@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Ninja {
+  id String @id @unique
+  name String
+  createdAt DateTime
+  messages Message[]
+
+  @@map("ninjas")
+}
+
+model Chat {
+  id String @id @unique
+  name String
+  messages Message[]
+
+  @@map("chats")
+}
+
+model Message {
+
+  id String @id @unique
+  content String
+  date DateTime
+
+  chat Chat @relation(fields: [chatId], references: [id])
+  chatId String
+  author Ninja @relation(fields: [authorId], references: [id])
+  authorId String
+
+  @@map("messages")
+}

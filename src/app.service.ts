@@ -1,8 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Req } from '@nestjs/common';
+import { Request } from 'express';
+import { CreateChatBody } from './http/dtos/create-chat-body';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
+  async sendIndex(): Promise<any> {
+    return {}
   }
 }
