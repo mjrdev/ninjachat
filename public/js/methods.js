@@ -6,6 +6,8 @@ export default {
       authorId: this.ninja.id,
       chatId: this.chat.id
     });
+
+    this.messageContent = "";
   },
 
   addMessage(message) {

@@ -30,7 +30,6 @@ export class ChatGateway {
       },
       chat: { name: 'none'}
     }
-
     const { ninja, chat, messages } = await this.createWorkspace.execute(workspaceProps)
 
     client.emit('ninja-init', { ninja, chat, messages })
