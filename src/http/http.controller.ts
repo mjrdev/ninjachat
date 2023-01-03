@@ -4,21 +4,12 @@ import { MessageRepository } from './repositories/message-repository';
 
 @Controller()
 export class HttpController {
-  constructor(
-    private createNinja: CreateNinja,
-    private messageRepository: MessageRepository
-  ) {}
+  constructor() {}
   @Get()
   @Render('index')
-  index() {
-    return {}
-  }
+  index() {}
   
   @Get('/chat')
   @Render('chat')
-  async chat(@Query() queries: any): Promise<any> {
-    const { name } = queries;
-
-    return {}
-  }
+  async chat(): Promise<any> {}
 }

@@ -15,14 +15,17 @@ new Vue({
       chat: {
         id:'example', name: 'example'
       },
-      messages: []
+      messages: [],
+      chatState: {
+        message: "",
+        debounce: null
+      }
     }
   },
   methods,
+  computed: {
+  },
   mounted() {
-    socket.on('event', ({ data }) => {
-      console.log(data)
-    })
 
     const url_string = window.location.href;
     const url = new URL(url_string);
@@ -39,11 +42,31 @@ new Vue({
       this.chat = chat;
       this.messages = messages;
 
-      console.log(data)
+      setTimeout(() => {
+        const content = document.querySelector('.content')
+        document.querySelector('.loading-page').style.display = 'none';
+        
+        content.scrollTo(0, content.scrollHeight)
+      }, 500)
     })
 
     this.socket.on('messages', (data) => {
-      this.messages = data
+      this.messages = data;
+
+      setTimeout(() => {
+        const content = document.querySelector('.content')
+        content.scrollTo(0, content.scrollHeight)
+      }, 30)
+    })
+
+    this.socket.on('writing', (ninja) => {
+      if(ninja == this.ninja.name) return
+      if (this.chatState.debounce) {
+        clearTimeout(this.chatState.debounce);
+      }
+
+      this.chatState.debounce = setTimeout(() => this.chatState.message = "", 1000)
+      this.chatState.message = ninja + ' is typing...'
     })
 
     document.addEventListener('keypress', (event) => {

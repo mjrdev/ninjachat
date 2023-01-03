@@ -3,7 +3,8 @@
 
 generator client {
   provider = "prisma-client-js"
-  binaryTargets = ["native", "debian-openssl-1.1.x"]
+  // binaryTargets = ["native", "debian-openssl-1.1.x"]
+  binaryTargets = ["linux-musl-openssl-3.0.x"]
 }
 datasource db {
   provider = "mysql"
@@ -30,7 +31,7 @@ model Chat {
 model Message {
 
   id String @id @unique
-  content String
+  content String @db.Text
   date DateTime
 
   chat Chat @relation(fields: [chatId], references: [id])

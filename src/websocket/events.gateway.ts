@@ -19,7 +19,6 @@ export class ChatGateway {
 
   @SubscribeMessage('connection')
   async connection(@ConnectedSocket() client: Socket, @MessageBody() name: string): Promise<any> {
-    console.log('nova conexão' + name)
     if (name.length === 0) {
       return this.server.emit('error', 'Ninja name não informado.');
     }
@@ -38,16 +37,21 @@ export class ChatGateway {
   @SubscribeMessage('send-message')
   async reqMessage(@ConnectedSocket() client: Socket, @MessageBody() message: MessageProps): Promise<any> {
 
+    if (message.content.length == 0 || message.content.length >= 65535) return
+
     const { content, authorId, chatId } = message;
 
     await this.sendMessage.execute({
       content, authorId, chatId
     })
-
-    console.log(chatId);
     
     const messages = await this.messageRepository.findByChatId(chatId)
 
     this.server.emit('messages', messages)
+  }
+
+  @SubscribeMessage('writing')
+  async writing(@MessageBody() ninja: string) {
+    this.server.emit('writing', ninja)
   }
 }

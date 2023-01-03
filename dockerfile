@@ -1,4 +1,6 @@
-FROM node:16.19-buster
+FROM node:16.19-alpine
+
+RUN apk add bash
 
 WORKDIR /usr/app
 

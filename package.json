@@ -1,6 +1,6 @@
 {
   "name": "ninjachat",
-  "version": "0.0.1",
+  "version": "0.8.1",
   "description": "",
   "author": "",
   "private": true,
@@ -8,7 +8,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "prettier --write \"src/**/*yar.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -62,7 +62,7 @@
   "prisma": {
     "seed": "ts-node --transpile-only prisma/seed.ts"
   },
-    "jest": {
+  "jest": {
     "moduleFileExtensions": [
       "js",
       "json",
