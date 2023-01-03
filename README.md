@@ -1,8 +1,8 @@
 
 ## Ninja Chat
 
-Ninja chat é um projeto de chat em realtime usando Websocket, usa como framework o NestJs, ligado ao banco de dados MySQL, aplicação está conteinerizada em docker.
-A aplicação faz uso do Typescript que nos permite implementar metodologias como Clear Code, Princípios do SOLID e Padrões de projetos (Design Patterns).
+Ninja chat é um projeto de chat em realtime usando Websocket, usa como framework o NestJs e banco de dados MySQL. A aplicação está conteinerizada em docker.
+Faz uso do Typescript que nos permite implementar metodologias como Clear Code, Princípios do SOLID e Padrões de projetos (Design Patterns).
 
 ![main](docs/chat.jpg)
 
